@@ -4,3 +4,15 @@
 	bottom: 15px
 }
 
+#padre-segundo{
+	display: none;
+	position: relative;
+}
+
+#oculto-dos{
+	display: none;
+}
+
+#tarjeta-permanente{
+	position: relative;
+}
