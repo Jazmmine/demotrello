@@ -1,3 +1,8 @@
+body{
+	background-image:url("../fondo.jpg"); 
+
+}
+
 #oculto{
 	display: none;
 	position: relative;
