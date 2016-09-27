@@ -1,54 +1,86 @@
 window.addEventListener("load", function(){
-	var padre = document.getElementById("padre")
-	var lista = document.getElementById("lista");
+    var contenedorPadre= document.getElementById("contenedorPadre");
+    var padre = document.getElementById("padre");
+    var lista = document.getElementById("lista");
     var formulario = document.getElementById("formulario");
     var button = document.getElementById("boton");
-	var div = document.getElementById("div");
+    var div = document.getElementById("div");
+    var i = 0;
     div.addEventListener("click", function() {
-    	agregar(formulario, div);
+        agregar(formulario, div);
+        lista.focus();
+
     });
 
     button.addEventListener("click", function(e){
-    	e.preventDefault();
-    	var texto = "<a>Añadir una tarjeta...</>";
-    	formulario.classList.toggle("none");
+        e.preventDefault();
+        var texto = "<a>Añadir una tarjeta...</a>";
+        var conedorHermano = document.createElement("div");
+        conedorHermano.classList.add("padre");
 
-    	var contenedor = document.createElement("div");
-    	contenedor.classList.add("formulario");
-    	contenedor.classList.add("width");
-    	contenedor.classList.add("inline-block");
-    	padre.appendChild(contenedor);
+        var padreTemporal = formulario.parentNode;
 
-    	crear("div", lista.value, contenedor, "negrita");
-    	crear("div", texto, contenedor, "grey");
-    	agregarNuevaLista(padre);
-    	contador ++;
+        contenedorPadre.appendChild(conedorHermano);
+        conedorHermano.appendChild(formulario);
+        conedorHermano.appendChild(div);
+
+        padreTemporal.remove();
+
+        var contenedor = document.createElement("div");
+        contenedor.classList.add("formulario");
+        contenedor.classList.add("width");
+        contenedor.classList.add("inline-block");
+        contenedor.classList.add("float-left");
+        contenedorPadre.insertBefore(contenedor, contenedorPadre.lastElementChild);
+        
+        agregar(formulario, div);
+
+        crear("div", lista.value, contenedor, "negrita");
+        crear("div", texto, contenedor, "grey");
+    
+        var select = document.querySelectorAll(".grey");
+
+        for(var i=0; i<select.length; i++){
+            select[i].addEventListener("click", function(){
+                this.classList.add("none");
+                crearFormulario("form", contenedor, "formulario");
+            });
+        }
+
+        lista.value="";
     });
 
     var close = document.getElementById("close");
     close.addEventListener("click", function(e) {
-    	e.preventDefault();
-    	agregar(formulario, div);
+        e.preventDefault();
+        agregar(formulario, div);
     });
 
-    function agregarNuevaLista(padre){
-    	var div= document.createElement("div");
-    	div.innerHTML="Añadir una lista..."
-    	div.classList.add("lista");
-    	padre.appendChild(div);
+    function crearFormulario(formulario, padre, clase1){
+        var formula = document.createElement(formulario);
+        formula.classList.add(clase1);
+        padre.appendChild(formula);
+
+        crear("textarea", "", formula, "textArea");
+        crear("button", "Guardar", formula, "button");
+
+        formula.lastElementChild.addEventListener("click", function(e){
+            e.preventDefault();
+            alert("Estoy");
+        })
     }
 
     function crear(div, contenido,padre, clase1){
-    	var titulo = document.createElement(div);
-    	titulo.innerHTML = contenido;
-    	titulo.classList.add("padding");
-    	titulo.classList.add(clase1);
-    	padre.appendChild(titulo)
+        var titulo = document.createElement(div);
+        titulo.innerHTML = contenido;
+        titulo.classList.add("padding");
+        titulo.classList.add(clase1);
+        padre.appendChild(titulo);
     }
 
     function agregar(formulario, div){
-    	formulario.classList.toggle("none");
-    	div.classList.toggle("none");
+        formulario.classList.toggle("none");
+        div.classList.toggle("none");
     }
 
 });
