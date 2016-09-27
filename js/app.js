@@ -1,53 +1,54 @@
 window.addEventListener("load", function(){
-	var nombreLista = document.getElementById("nombre-lista");
+	var padre = document.getElementById("padre")
 	var lista = document.getElementById("lista");
-	var eliminar = document.getElementById("eliminar");
-	var boton = document.getElementById("guardar");
-	var padreSegundo = document.getElementById("padre-segundo");
-	var padrePrimero = document.getElementById("padre-primero");
-	var tarjeta = document.getElementById("nombre-tarjeta");
-	var botonDos = document.getElementById("guardar-dos");
-	var eliminarDos = document.getElementById("eliminar-dos")
+    var formulario = document.getElementById("formulario");
+    var button = document.getElementById("boton");
+	var div = document.getElementById("div");
+    div.addEventListener("click", function() {
+    	agregar(formulario, div);
+    });
 
-/* Un elemento en el HTML con el mensaje "Añadir una lista", que al dar click muestre un 
-input y un botón (formulario) para que el usuario ingrese el nombre de la lista.*/
+    button.addEventListener("click", function(e){
+    	e.preventDefault();
+    	var texto = "<a>Añadir una tarjeta...</>";
+    	formulario.classList.toggle("none");
 
-	nombreLista.addEventListener("click", function(){
-		document.getElementById("oculto").style.display = "block";
-	});
+    	var contenedor = document.createElement("div");
+    	contenedor.classList.add("formulario");
+    	contenedor.classList.add("width");
+    	contenedor.classList.add("inline-block");
+    	padre.appendChild(contenedor);
 
-	eliminar.addEventListener("click", function(){
-		document.getElementById("oculto").style.display = "none";
-	});
+    	crear("div", lista.value, contenedor, "negrita");
+    	crear("div", texto, contenedor, "grey");
+    	agregarNuevaLista(padre);
+    	contador ++;
+    });
 
-/*Mostrar en el HTML, el texto ingresado al dar click en el botón de "Guardar" del formulario (como si fuera título de la lista).
-Debajo del título, mostrar el mensaje clickeable de "Añadir una tarjea".*/
+    var close = document.getElementById("close");
+    close.addEventListener("click", function(e) {
+    	e.preventDefault();
+    	agregar(formulario, div);
+    });
 
-	boton.addEventListener("click", function(){
-		var contenedor = lista.value;
-		var titulo = document.getElementById("titulo");
-		titulo.innerText = contenedor;
-		padreSegundo.style.display = "block";
-		padrePrimero.style.display = "none";
-	});
+    function agregarNuevaLista(padre){
+    	var div= document.createElement("div");
+    	div.innerHTML="Añadir una lista..."
+    	div.classList.add("lista");
+    	padre.appendChild(div);
+    }
 
-	tarjeta.addEventListener("click", function(){
-		tarjeta.style.display = "none";
-		document.getElementById("oculto-dos").style.display = "block";
-	});
+    function crear(div, contenido,padre, clase1){
+    	var titulo = document.createElement(div);
+    	titulo.innerHTML = contenido;
+    	titulo.classList.add("padding");
+    	titulo.classList.add(clase1);
+    	padre.appendChild(titulo)
+    }
 
-	botonDos.addEventListener("click", function(){
-		var contenedorDos = document.getElementById("tarjeta").value;
-		var tarjetaPermanente = document.getElementById("tarjeta-permanente");
-		tarjetaPermanente.innerText = contenedorDos;
-		document.getElementById("oculto-dos").style.display = "none";
-
-    	
-	});
-
-	eliminarDos.addEventListener("click", function(){
-		document.getElementById("oculto-dos").style.display = "none";
-	});
-
+    function agregar(formulario, div){
+    	formulario.classList.toggle("none");
+    	div.classList.toggle("none");
+    }
 
 });

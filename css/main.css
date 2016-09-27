@@ -1,23 +1,99 @@
-body{
-	background-image:url("../fondo.jpg"); 
-
+body {
+	background-image: url(fondo.jpg);
+	font-family:Arial;
+	padding: 20px;
 }
 
-#oculto{
+form {
+	display: inline-block;
+	width: 20%;
+}
+
+.lista{
+	padding: 10px;
+	width: 19%;
+	background-color: rgba(0,0,0,0.4);
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.lista:hover{
+	background-color: rgba(0,0,0,0.8);
+}
+
+.formulario{
+	background-color: #E2E4E6;
+	padding: 4px;
+	border-radius: 5px;
+}
+
+.button:hover{
+	background-color: #57A641;
+}
+
+.button {
+	background-color: #61BD4F;
+	padding: 10px 20px;
+	margin-top: 10px;
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+}
+
+.lista, .button {
+	border: none;
+	color: white;
+	font-size: 1em;
+	border-radius: 5px;
+}
+
+.none{
 	display: none;
-	position: relative;
-	bottom: 15px
 }
 
-#padre-segundo{
-	display: none;
-	position: relative;
+.formulario input{
+	width: 90%;
+	box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 8px inset;
+	background-color: rgba(0, 0, 0, 0.0470588);
+	padding: 10px;
+	border-radius: 5px;
+	border-color: rgb(170, 170, 170);
+	font-size: 1em;
 }
 
-#oculto-dos{
-	display: none;
+.close{
+	float: none;
+	font-size: 2.5em;
 }
 
-#tarjeta-permanente{
-	position: relative;
+.padding {
+	padding: 5px;
+}
+
+.negrita {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.grey a{
+	color: #B3B4B5;
+}
+
+.grey:hover{
+	background-color: #CDD2D4;
+	text-decoration: underline;
+}
+
+.grey:hover a{
+	color: black;
+}
+
+.white {
+	background-color: white;
+}
+
+.width {
+	width: 20%;
+}
+
+.inline-block {
+	display: inline-block;
 }

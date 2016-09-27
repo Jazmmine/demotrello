@@ -3,35 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Trello</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<div class="contenedor">
-		<form id="padre-primero">
-			<span id="nombre-lista">Añadir una lista....</span>
-			<div id="oculto">
-				<input id="lista" type="text" placeholder="Añadir una lista">
-				<div class="seleccionar">
-					<button id="guardar" type="button">Guardar</button>
-					<a id="eliminar" href="#">X</a>
-				</div>
-			</div>
-		</form>
-		<div id="padre-segundo">
-			<div id="titulo"></div>
-			<form class="caja-dos">
-				<span id="nombre-tarjeta">Añadir una tarjeta....</span>
-				<div id="oculto-dos">
-					<textarea id="tarjeta" type="text"></textarea> 
-					<div class="seleccionar-dos">
-						<button id="guardar-dos" type="button">Añadir</button>
-						<a id="eliminar-dos" href="#">X</a>
-					</div>
-				</div>
+		<div id="padre">
+			<div class="lista" id="div">Añadir una lista...</div>
+			<form class="formulario none" id="formulario">
+				<input type="text" id="lista" name="lista" placeholder="Añadir una lista...">
+				<button type="submit" id="boton" class="button">Guardar</button>
+				<button type="submit" class="close" aria-label="Close" id="close"><span aria-hidden="true">&times;</span></button>
 			</form>
 		</div>
-		<div id="tarjeta-permanente"></div>
-	</div>
 	<script type="text/javascript" src="js/app.js"></script>	
 </body>
 </html>
