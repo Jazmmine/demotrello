@@ -1,5 +1,5 @@
 body {
-	background-image: url(../img/fondo.jpg);
+	background-image: url(fondo.jpg);
 	font-family:Arial;
 	padding: 20px;
 	white-space: nowrap;
@@ -111,4 +111,9 @@ form {
 
 .float-left{
 	float: left;
+}
+
+.mensajes {
+	padding: 5px;
+	background-color: white;
 }
